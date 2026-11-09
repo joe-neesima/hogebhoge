@@ -1,17 +1,90 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
-    <script src="components/loader.js"></script>
-    <link rel="stylesheet" href="components/loader.css">
+    <meta name="theme-color" content="#101d1c">
+    <title>Orbit Pinball</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <script>
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.90.0/dist/phaser.min.js"></script>
+    <script src="js/pinball.js" defer></script>
 </head>
 <body>
-	<br />
-    This is a template for Monaca app.
+    <main class="arcade-shell">
+        <header class="topbar">
+            <a class="wordmark" href="#" aria-label="Orbit Pinball ホーム">
+                <span class="wordmark-mark" aria-hidden="true">O</span>
+                <span>ORBIT<span class="wordmark-light"> / ARCADE</span></span>
+            </a>
+            <span class="edition">TABLE 01 <i></i> EARTH ORBIT</span>
+        </header>
+
+        <section class="game-layout" aria-label="ピンボールゲーム">
+            <aside class="side-rail side-rail-left" aria-label="ゲーム情報">
+                <p class="rail-label">MISSION</p>
+                <p class="mission-title">KEEP<br>IT<br>ALIVE.</p>
+                <div class="rail-rule"></div>
+                <p class="rail-copy">バンパーに当てて<br>スコアを伸ばそう。</p>
+                <div class="orbit-mark" aria-hidden="true"><span></span></div>
+            </aside>
+
+            <section class="machine" aria-label="Orbit Pinball テーブル">
+                <div class="machine-topline">
+                    <span class="machine-name">ORBIT PINBALL</span>
+                    <span class="machine-status"><i></i> READY TO PLAY</span>
+                </div>
+                <div class="scoreboard" aria-live="polite">
+                    <div class="score-cell score-main">
+                        <span class="score-label">SCORE</span>
+                        <strong id="score">000000</strong>
+                    </div>
+                    <div class="score-cell">
+                        <span class="score-label">BEST</span>
+                        <strong id="best-score">000000</strong>
+                    </div>
+                    <div class="score-cell lives-cell">
+                        <span class="score-label">BALLS</span>
+                        <strong id="balls" aria-label="残りボール">● ● ●</strong>
+                    </div>
+                </div>
+                <div class="table-frame">
+                    <div id="game-canvas" aria-label="ピンボールのプレイ画面"></div>
+                    <div class="table-stamp" aria-hidden="true">OP<br><span>01</span></div>
+                    <div class="table-led" aria-hidden="true"></div>
+                </div>
+                <div class="control-deck" aria-label="ゲーム操作">
+                    <button class="control-button flipper-button" type="button" data-control="left" aria-label="左フリッパー">
+                        <span class="control-arrow" aria-hidden="true">↗</span><span>LEFT</span>
+                    </button>
+                    <button class="launch-button" id="launch-button" type="button">
+                        <span class="launch-icon" aria-hidden="true">↑</span><span>LAUNCH</span>
+                    </button>
+                    <button class="control-button flipper-button" type="button" data-control="right" aria-label="右フリッパー">
+                        <span class="control-arrow" aria-hidden="true">↖</span><span>RIGHT</span>
+                    </button>
+                </div>
+                <p class="table-caption"><span>FLIPPERS</span> A / D または ← / → <span class="caption-separator">·</span> <span>LAUNCH</span> SPACE</p>
+            </section>
+
+            <aside class="side-rail side-rail-right" aria-label="スコア情報">
+                <div class="orbit-number">01</div>
+                <p class="rail-label">HIGH SCORE</p>
+                <p class="side-best" id="side-best">000000</p>
+                <div class="rail-rule"></div>
+                <p class="rail-label">CONTROLS</p>
+                <p class="rail-copy">左右のフリッパーで<br>ボールを打ち返す。</p>
+                <div class="key-hints" aria-hidden="true"><kbd>A</kbd><kbd>D</kbd><kbd>←</kbd><kbd>→</kbd></div>
+            </aside>
+        </section>
+
+        <footer class="footer-line">
+            <span>ORBIT PINBALL <span class="footer-accent">—</span> 2026</span>
+            <span>3 BALLS <i></i> ONE HIGH SCORE</span>
+        </footer>
+    </main>
 </body>
 </html>
